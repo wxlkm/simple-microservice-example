@@ -1,0 +1,6 @@
+FROM 192.168.0.212/sm/openjdk8:v1
+LABEL maintainer="wuxinli"
+COPY ./target/product-service-biz.jar /opt/service
+EXPOSE 8010
+WORKDIR /opt/service
+CMD java -jar product-service-biz.jar

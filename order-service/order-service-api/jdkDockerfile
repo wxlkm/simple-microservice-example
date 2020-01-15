@@ -1,0 +1,6 @@
+FROM 192.168.0.212/sm/openjdk8:v1
+LABEL maintainer="wuxinli"
+COPY ./target/order-service-api.jar /opt/service
+EXPOSE 9999
+WORKDIR /opt/service
+CMD java -jar gateway-service.jar
