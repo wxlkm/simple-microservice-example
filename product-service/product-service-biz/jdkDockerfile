@@ -1,0 +1,7 @@
+FROM 192.168.0.212/sm/openjdk8:v1
+LABEL maintainer="wuxinli"
+COPY ./target/product-service-biz.jar /opt/service
+COPY pinpoint /pinpoint
+EXPOSE 8010
+WORKDIR /opt/service
+CMD java -jar -javaagent:/pinpoint/pinpoint-bootstrap-1.8.3.jar -Dpinpoint.agentId=$(echo $HOSTNAME | awk -F- '{print "product-"$NF}') -Dpinpoint.applicationName=ms-product product-service-biz.jar
